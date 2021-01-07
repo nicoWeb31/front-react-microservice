@@ -9,9 +9,10 @@ const CommentCreate = ({postId}) => {
     const [comment,setComment] = useState('');
 
 
-    const sendComment = async(com) => {
+    const sendComment = async(data) => {
 
-        await axios.post(`http://localhost:4005/posts/${postId}/comments`,{com})
+        await axios.post(`http://localhost:4005/posts/${postId}/comments`,{content: data},{headers : {'Content-Type':'application/json'}})
+        console.log(comment)
 
     }
 
@@ -20,15 +21,16 @@ const CommentCreate = ({postId}) => {
         sendComment(comment);
         setComment('')
     }
+    
 
     return (
         <div>
             <form onSubmit={onHandleSubmit}>
                 <div className="form-group">
                     <label>new comment </label>
-                    <input type="text" />
+                    <input type="text" value={comment} onChange={e=>setComment(e.target.value)}/>
                 </div>
-                <button type="submit" className="btn btn-primary" value={comment} onChange={e=>setComment(e.target.value)}>send</button>
+                <button type="submit" className="btn btn-primary"  >send</button>
             </form>
         </div>
     )

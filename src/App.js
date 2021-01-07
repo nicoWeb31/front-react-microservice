@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+
 import PostCreate from './component/PostCreate';
 import PostList from './component/PostList';
 
@@ -10,6 +11,7 @@ function App() {
       <PostCreate/>
       <hr/>
       <h1>Post List</h1>
+
       <PostList/>
     </div>
   );
