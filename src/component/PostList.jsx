@@ -11,7 +11,8 @@ const [posts,setPosts] = useState({})
     useEffect(()=>{
 
         const getPosts = async ()=>{
-            const {data} =  await axios.get('http://localhost:4000/posts')
+            const {data} =  await axios.get('http://localhost:4001/posts')
+            console.log(data)
             setPosts(data)
         }
 
@@ -26,7 +27,7 @@ const [posts,setPosts] = useState({})
             <div className="card " style={{width:'30', marginBottom: '20px'}} key={post.id} >
                 <div className="card-body">
                     <h3>{post.title}</h3>
-                    <CommentList postId={post.id}/>
+                    <CommentList comments={post.comments}/>
                     <CommentCreate postId={post.id}/>
                 </div>
             </div>
